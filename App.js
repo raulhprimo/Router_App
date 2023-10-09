@@ -11,7 +11,6 @@ export default function App() {
       />
       <TextInput style={styles.formInput}
       placeholder='Informe a sua Unidade'
-      
       />
       <Pressable style={styles.formButton}>
         <Text style={styles.textButton}>Logar</Text>
