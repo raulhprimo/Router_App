@@ -13,14 +13,14 @@ export default function App() {
       placeholder='Informe a sua Unidade'
       />
       <Pressable style={styles.formButton}>
-        <Text style={styles.textButton}>Logar</Text>
+        <Text style={styles.textButton}>Continuar  ➤</Text>
       </Pressable>
       <View style={styles.subContainer}>
-        <Pressable style={styles.subButton}>
+        {/* <Pressable style={styles.subButton}>
           <Text style={styles.subTextButton}>Esqueci a senha</Text>
-        </Pressable>
+        </Pressable> */}
         <Pressable style={styles.subButton}>
-        <Text style={styles.subTextButton}>Novo usuário</Text>
+        <Text style={styles.subTextButton}>Powered by Raul Henrique</Text>
         </Pressable>
       </View>
     </View>
