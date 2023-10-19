@@ -1,18 +1,47 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { auth  } from './firelink';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function App() {
+  const [userMail, setUserMail] = useState('');
+  const [userPass, setUserPass] = useState('');
+
+  function userLogin (){
+    signInWithEmailAndPassword(auth, userMail, userPass)
+    .then((userCredential) =>{
+      const user = userCredential.user;
+      alert('Login Efetuado')
+      console.log(user); 
+    })
+    .catch((error)=>{
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    })
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.formTitle}>DXC-TECHNOLOGY</Text>
       <TextInput style={styles.formInput}
       placeholder='Informe o seu RE'
+      keyboardType='email-address'
       autoComplete="username"
-      />
+      value={ userMail }
+      onChangeText={setUserMail}
+
+        />
       <TextInput style={styles.formInput}
-      placeholder='Informe a sua Unidade'
+      placeholder='Informe a sua senha'
+      secureTextEntry
+      value={userPass}
+      onChangeText={setUserPass}
       />
-      <Pressable style={styles.formButton}>
+      <Pressable style={styles.formButton} 
+      onPress={userLogin}
+      >
         <Text style={styles.textButton}>Continuar  ➤</Text>
       </Pressable>
       <View style={styles.subContainer}>
@@ -26,7 +55,7 @@ export default function App() {
     </View>
   );
 }
-
+//Style
 const styles = StyleSheet.create({
   container: {
     flex: 1,
